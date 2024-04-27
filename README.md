@@ -4,6 +4,7 @@
 # features
  # login /signup form
    - sign in form 
+   - sign up form 
    - redirect to  browse page   
  # browse page
    - header 

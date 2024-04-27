@@ -1,24 +1,9 @@
-import './App.css';
-
+import Body from './components/Body'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className='tracking-widest'>hello </h1>
-        <h2 className='tracking-widest'>hello 2</h2>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link text-9xl "
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+    <Body/>
+   </>
   );
 }
 
