@@ -6,8 +6,6 @@ function App() {
       <header className="App-header">
         <h1 className='tracking-widest'>hello </h1>
         <h2 className='tracking-widest'>hello 2</h2>
-        <h2 className='tracking-widest'>hello 2</h2>
-        <h2 className='tracking-widest'>hello 2</h2>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
