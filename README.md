@@ -6,6 +6,8 @@
    - sign in form 
    - sign up form 
    - redirect to  browse page   
+   -deployed my app
+   - create user accounts
  # browse page
    - header 
     -main movie trailer 
