@@ -1,9 +1,27 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
+import {signOut } from "firebase/auth";
+import firebase from '../utils/firebase'
+import { useSelector } from 'react-redux';
 const Header = () => {
+  const myname = useSelector(store => store?.user?.displayName);
+  const auth = firebase();
+  const navigate = useNavigate();
+  const handlesignout =()=>{
+    signOut(auth).then(() => {
+      navigate("/");
+    }).catch((error) => {
+      // An error happened.
+      navigate("/error");
+    });
+  }
   return (
-    <div className='absolute px-8 py-2 bg-gradient-to-b from-black z-10'>
-      <img className='w-44' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="nhi h" />
+    <div className='absolute flex justify-between  w-screen px-8 py-2 bg-gradient-to-b from-black z-10'>
+      <img className='w-40 h-20' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="nhi h" />
+      <div className='flex justify-end'>
+      <img onClick={handlesignout}  className='w-40 h-24 cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/14018/14018685.png" alt="" />
+      <h1 className='text-3xl'>{myname}</h1>
+     </div>
     </div>
   )
 }

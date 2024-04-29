@@ -8,6 +8,9 @@
    - redirect to  browse page   
    -deployed my app
    - create user accounts
+   -sign in/up using firebase
+   - created redux store 
+   - created signout functionality
  # browse page
    - header 
     -main movie trailer 

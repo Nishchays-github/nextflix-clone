@@ -2,7 +2,6 @@
 import { getAuth} from "firebase/auth"
 import { initializeApp } from "firebase/app"
  // Initialize Firebase
-
 const firebase = () => {
   function config(){
     const firebaseConfig = {
@@ -14,7 +13,6 @@ const firebase = () => {
       appId: "1:213371834464:web:b9baf2e573e45c0748f305",
       measurementId: "G-D0SSSQ8ZT2"
     };
-    
     initializeApp(firebaseConfig);
   }
   config();
@@ -23,4 +21,4 @@ const firebase = () => {
   )
 }
 
-export default firebase
+export default firebase;

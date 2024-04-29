@@ -2,12 +2,16 @@ import React from 'react'
 import Header from './Header'
 import { useState,useRef} from 'react'
 import validate from '../utils/validate'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth"
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import firebase from '../utils/firebase'
-
+import { useNavigate } from 'react-router-dom'
+import {useDispatch} from "react-redux"
+import  {adduser} from "../utils/userslice"
 const Login = () => {
   const [signup, setsignup] = useState(true);
+  const dispatch =  useDispatch();
   const [valid, setvalid] = useState(null);
+  const navigate = useNavigate();
   const auth = firebase();
   const email = useRef(null);
   const password = useRef(null);
@@ -24,11 +28,18 @@ const Login = () => {
     if (ret) return;
 
     if (!signup) {
+      const auth = firebase();
       // sign up logic
       createUserWithEmailAndPassword(auth, mail, pass)
         .then((userCredential) => {
           const user = userCredential.user;
           console.log('User created:', user);
+          console.log("navii",navigate);
+          navigate("/browse");
+        }).then(()=>{
+          const {uid,email,displayName} = auth.currentUser;
+        dispatch(adduser({ uid: uid, email: email, displayName: displayName }));
+  
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -39,9 +50,7 @@ const Login = () => {
     else {
         signInWithEmailAndPassword(auth, mail, pass)
       .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        // ...
+        navigate("/browse");
       })
       .catch((error) => {
         const errorCode = error.code;
