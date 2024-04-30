@@ -1,15 +1,15 @@
 import React from 'react'
 import Header from './Header'
-import { useState,useRef} from 'react'
+import { useState, useRef } from 'react'
 import validate from '../utils/validate'
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import firebase from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
-import {useDispatch} from "react-redux"
-import  {adduser} from "../utils/userslice"
+import { useDispatch } from "react-redux"
+import { adduser } from "../utils/userslice"
 const Login = () => {
   const [signup, setsignup] = useState(true);
-  const dispatch =  useDispatch();
+  const dispatch = useDispatch();
   const [valid, setvalid] = useState(null);
   const navigate = useNavigate();
   const auth = firebase();
@@ -33,13 +33,10 @@ const Login = () => {
       createUserWithEmailAndPassword(auth, mail, pass)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log('User created:', user);
-          console.log("navii",navigate);
-          navigate("/browse");
-        }).then(()=>{
-          const {uid,email,displayName} = auth.currentUser;
-        dispatch(adduser({ uid: uid, email: email, displayName: displayName }));
-  
+        }).then(() => {
+          const { uid, email, displayName } = auth.currentUser;
+          dispatch(adduser({ uid: uid, email: email, displayName: displayName }));
+          navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -48,16 +45,14 @@ const Login = () => {
         });
     }
     else {
-        signInWithEmailAndPassword(auth, mail, pass)
-      .then((userCredential) => {
-        navigate("/browse");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        setvalid(errorCode)
-      });
+      signInWithEmailAndPassword(auth, mail, pass)
+        .then((userCredential) => {
+          navigate("/browse")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          setvalid(errorCode)
+        });
     }
   }
 
@@ -76,9 +71,9 @@ const Login = () => {
         <input ref={password} type="password" name='pass' id='pass' placeholder='Password' className='p-4 my-2 text-white w-full bg-black ' />
         <p className='text-red-500 m-4 text-sm'>{valid}</p>
         <button type="submit" className="bg-gray-300 p-4 my-2 bg-red-700 w-full">{signup ? "Sign IN" : "Sign up"}</button>
-        
+
         <p className='text-white  mt-5 py-4 cursor-pointer' onClick={toggle}>new to netflix ?</p>
-        </form>
+      </form>
     </>
   )
 }
