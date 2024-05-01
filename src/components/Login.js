@@ -7,6 +7,7 @@ import firebase from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { adduser } from "../utils/userslice"
+import prop from  "../utils/cosntants"
 const Login = () => {
   const [signup, setsignup] = useState(true);
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const Login = () => {
     <>
       <Header />
       <div className='absolute '>
-        <img className='bg-zinc-950 ' src="https://assets.nflxext.com/ffe/siteui/vlv3/c7f07b68-7989-4ff7-a31e-11c17dcc2fea/fcf685b8-3f9f-42d8-9af3-4bb86fa5a3b8/IN-en-20240422-popsignuptwoweeks-perspective_alpha_website_small.jpg" alt="" />
+        <img className='bg-zinc-950 ' src={prop.back_img} alt="" />
       </div>
       <form onSubmit={handleSubmit} id="form" className='absolute bhg bg-zinc-950 w-3/12 my-36 mx-auto right-0 left-0 p-12 rounded-lg bg-opacity-85 text-white'>
         <h1 className='font-bold text-3xl p-4 text-white'>{signup ? "Sign IN" : "Sign up"}</h1>

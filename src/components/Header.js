@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from 'react';
 import { adduser, removeuser } from "../utils/userslice";
-
+import prop from  "../utils/cosntants"
 const Header = () => {
   const myname = useSelector(store => store?.user?.displayName);
   const auth = firebase();
@@ -24,7 +24,7 @@ const Header = () => {
 
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+   const t =  onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(adduser({ uid: uid, email: email, displayName: displayName }));
@@ -36,17 +36,15 @@ const Header = () => {
         navigate("/"); // Redirect to login page if not authenticated
       }
     });
+    return ()=> t();
   }, [])
 
 
-
-
-
   return (
-    <div className='absolute flex justify-between  w-screen px-8 py-2 bg-gradient-to-b from-black z-10'>
-      <img className='w-40 h-20' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="nhi h" />
+    <div className=' flex justify-between  w-screen px-8 py-2 bg-gradient-to-b from-black z-50 fixed'>
+      <img className='w-40 h-20' src={prop.netflix_logo} alt="nhi h" />
       <div className='flex justify-end'>
-        { log && <img onClick={handlesignout} className='w-40 h-24 cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/14018/14018685.png" alt="" />
+        { log && <img onClick={handlesignout} className='w-40 h-24 cursor-pointer' src={prop.logout} alt="" />
         }<h1 className='text-3xl'>{myname}</h1>
       </div>
     </div>
