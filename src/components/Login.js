@@ -7,7 +7,7 @@ import firebase from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { adduser } from "../utils/userslice"
-import prop from  "../utils/cosntants"
+import prop from "../utils/cosntants"
 const Login = () => {
   const [signup, setsignup] = useState(true);
   const dispatch = useDispatch();

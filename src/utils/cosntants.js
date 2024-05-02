@@ -8,4 +8,5 @@ const API_OPTIONS =  {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MDZkMTMxMzFlM2ZlNzJkYjBkZDdmMmY5MmI5ODNkOSIsInN1YiI6IjY2MzE0MWFhOWE4YThhMDEyN2FlMDk5MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.o6NubFXisRtpiuIb19n78uNtyXGXNxfuYlGANDehxWs'
     }
   };
-export default {logout, netflix_logo,back_img, API_OPTIONS};
+const IMG_CDN = "https://image.tmdb.org/t/p/w780/"
+export default {logout, netflix_logo,back_img, API_OPTIONS,IMG_CDN};

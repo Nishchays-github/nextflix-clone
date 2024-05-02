@@ -15,7 +15,6 @@ const useFetchTrailer = (id) => {
     useEffect(() => {
         fetchData();
     }, []);
-
     return trailerURL;
 };
 
