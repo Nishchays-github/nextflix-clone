@@ -14,9 +14,10 @@ const VideoBack = ({ id }) => {
         width="100%"
         height="800px"
         muted={true}
-        playing={true} // Autoplay
+        // playing={true} // Autoplay
         playbackRate={1}
-      /></div>
+      />
+    </div>
   );
 };
 
