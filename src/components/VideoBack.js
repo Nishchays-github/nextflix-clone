@@ -14,7 +14,7 @@ const VideoBack = ({ id }) => {
         width="100%"
         height="800px"
         muted={true}
-        // playing={true} // Autoplay
+        playing={true}
         playbackRate={1}
       />
     </div>
