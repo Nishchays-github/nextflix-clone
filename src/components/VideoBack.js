@@ -15,7 +15,7 @@ const VideoBack = ({ id }) => {
         height="800px"
         muted={true}
         playing={true}
-        playbackRate={1}
+        playbackRate={1.2}
       />
     </div>
   );
